@@ -168,10 +168,7 @@
                     <div class="space-y-1">
                         <label class="text-[9px] uppercase text-stone-400 font-bold">Precio ($)</label>
                         <input type="number" id="prod-precio" step="0.01" class="w-full bg-stone-950/80 border border-stone-800 text-xs text-white p-3.5 rounded-xl focus:outline-none">
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-[9px] uppercase text-stone-400 font-bold">Stock Activo</label>
-                        <input type="number" id="prod-stock" class="w-full bg-stone-950/80 border border-stone-800 text-xs text-white p-3.5 rounded-xl focus:outline-none">
+                    
                     </div>
                     <div class="md:col-span-2 space-y-1">
                         <label class="text-[9px] uppercase text-stone-400 font-bold">Descripción Exclusiva</label>
@@ -259,8 +256,8 @@
     <footer class="border-t border-stone-950 bg-black/60 p-4 text-center text-[10px] text-stone-600 font-mono tracking-widest mt-12">© 2026 D'UNIG LUXURY PANEL. TODOS LOS DERECHOS RESERVADOS.</footer>
 
     <script>
-        const SUPABASE_URL = "https://rlcdlzbnxawsmbtpkcbg.supabase.co"; 
-        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJsY2RsemJueGF3c21idHBrY2JnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMzMzM0NTUsImV4cCI6MjA5ODkwOTQ1NX0.cVNgy6b_l64M1c3GYgHwVeFeg5PPTUDWtY2IGWGo4IA"; 
+        const SUPABASE_URL = "https://yoibmpulvokhvvhkryzv.supabase.co"; 
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvaWJtcHVsdm9raHZ2aGtyeXp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1MDgwODQsImV4cCI6MjA5ODA4NDA4NH0.cNq3eZzXyB7kqdsyqf3ctKsYO5x1ABo20hgFeJdyzBE"; 
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // Lógica de seguridad integrada
@@ -427,23 +424,7 @@ async function eliminarAdicional(id) {
             });
         }
 
-        async function inyectarProductoASupabase() {
-            const idEdicion = document.getElementById('prod-id-edicion').value;
-            const t = document.getElementById('prod-titulo').value.trim();
-            const c = document.getElementById('prod-categoria').value;
-            const p = parseFloat(document.getElementById('prod-precio').value);
-            const s = parseInt(document.getElementById('prod-stock').value);
-            const d = document.getElementById('prod-descripcion').value.trim();
-
-            if (!t || isNaN(p) || isNaN(s)) { alert("Complete todos los campos requeridos."); return; }
-            const sliderValidos = fotosSliderArray.filter(f => f !== "");
-
-            const payload = {
-                titulo: t, categoria: c || "General", descripcion: d, precio: p, stock: s,
-                instagram_dueno: filtroInstagram, imagen_url: sliderValidos[0] || "",
-                imagenes_slider: JSON.stringify(sliderValidos)
-            };
-
+       
             let error;
             if (idEdicion) { 
                 const res = await supabaseClient.from('productos').update(payload).eq('id', idEdicion); 
