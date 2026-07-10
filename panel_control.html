@@ -199,7 +199,6 @@
                                 <th class="p-3">Objeto</th>
                                 <th class="p-3">Categoría</th>
                                 <th class="p-3">Precio</th>
-                                <th class="p-3 text-center">Stock</th>
                                 <th class="p-3 text-right">Acción</th>
                             </tr>
                         </thead>
@@ -416,7 +415,6 @@ async function eliminarAdicional(id) {
                     <td class="p-3 text-white font-bold">${p.titulo}</td>
                     <td class="p-3 text-stone-400">${p.categoria}</td>
                     <td class="p-3 text-amber-400 font-mono font-bold">$${parseFloat(p.precio).toFixed(2)}</td>
-                    <td class="p-3 text-center font-mono">${p.stock}</td>
                     <td class="p-3 text-right flex justify-end gap-2">
                         <button onclick="prepararEdicionProducto(${p.id})" class="p-2 text-amber-400 bg-stone-900 border border-stone-800 rounded-lg cursor-pointer hover:bg-stone-850">✏️</button>
                         <button onclick="eliminarProductoDeSupabase(${p.id})" class="p-2 text-red-400 bg-stone-900 border border-stone-800 rounded-lg cursor-pointer hover:bg-stone-850">🗑️</button>
